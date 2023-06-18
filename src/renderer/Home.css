@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 .main-page {
   width: 100%;
   height: 100%;
@@ -17,7 +21,9 @@
 }
 
 .main-page__header h3 {
-  font-size: 30px;
+  font-size: 26px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #eee; /* TODO: Set Variable */
 }
 
 .main-page__header button {
@@ -25,8 +31,8 @@
   background: none;
   outline: none;
 
-  font-size: 25px;
-  color: var(--font-white);
+  font-size: 30px;
+  color: #1aa4ff; /* TODO: Set Variable */
   cursor: pointer;
 }
 
@@ -37,6 +43,7 @@
   flex-direction: column;
   overflow: auto;
   box-sizing: border-box;
+  padding: 0;
 }
 
 .alarm-item {
@@ -44,17 +51,25 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: auto 90px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #26262a;
+  padding-left: 10px;
 }
 
 .alarm-item__time {
   font-size: 40px;
-  color: var(--font-white);
-  margin: 5px 0;
+  color: #eee; /* TODO: Set Variable */
+  font-family: Arial, Helvetica, sans-serif;
+  grid-row: 1;
 }
 
 .alarm-item__label {
-  margin: 5px 0;
+  margin: 2px 0;
+  color: #eee; /* TODO: Set Variable */
+  font-family: Arial, Helvetica, sans-serif;
+  grid-row: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .alarm-item__toggle {

@@ -17,7 +17,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: gray;
+    background-color: #26262a;
     border-radius: 50px;
     transition: all 0.4s;
 }
@@ -37,8 +37,8 @@
 
 /* On checked */
 input:checked + .slider {
-    background-color: #1aa4ff;
+    background-color: #1aa4ff; /* TODO: Set Variable */
 }
 input:checked + .slider:before {
-    transform: translateX(28px);
+    transform: translateX(30px);
 }

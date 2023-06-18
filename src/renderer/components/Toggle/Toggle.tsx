@@ -5,14 +5,10 @@ type ToggleProps = {
   handler?: () => void;
 }
 
-const Toggle = ({
-  handler = () => {},
-}: ToggleProps) => {
+const Toggle = ({checked, handler}: ToggleProps) => {
   return (
     <label className="toggle">
-      <input type="checkbox" 
-        onChange={handler}
-      />
+      <input type="checkbox" onChange={handler} defaultChecked={checked} />
       <span className="slider"></span>
     </label>
   );
