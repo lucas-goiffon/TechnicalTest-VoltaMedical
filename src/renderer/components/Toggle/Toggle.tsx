@@ -1,4 +1,4 @@
-import './Toggle.css';
+import './Toggle.scss';
 
 type ToggleProps = {
   checked?: boolean;

@@ -1,9 +1,5 @@
 .toggle {
     display: none;
-}
-
-/* The container and background */
-.toggle {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -20,24 +16,24 @@
     background-color: #26262a;
     border-radius: 50px;
     transition: all 0.4s;
-}
 
-/* The sliding button */
-.slider:before {
-    position: absolute;
-    content: "";
-    width: 26px;
-    height: 26px;
-    left: 2px;
-    top: 2px;
-    background-color: #eee;
-    border-radius: 50px;
-    transition: all 0.4s;
+    /* The sliding button */
+    &:before {
+        position: absolute;
+        content: "";
+        width: 26px;
+        height: 26px;
+        left: 2px;
+        top: 2px;
+        background-color: #eee;
+        border-radius: 50px;
+        transition: all 0.4s;
+    }
 }
 
 /* On checked */
 input:checked + .slider {
-    background-color: #1aa4ff; /* TODO: Set Variable */
+    background-color: #1aa4ff; //TODO: Set Variable
 }
 input:checked + .slider:before {
     transform: translateX(30px);
