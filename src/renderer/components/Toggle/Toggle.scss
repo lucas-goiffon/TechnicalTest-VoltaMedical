@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .toggle {
     display: none;
     position: relative;
@@ -13,7 +15,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #26262a;
+    background-color: $contrastColor;
     border-radius: 50px;
     transition: all 0.4s;
 
@@ -25,7 +27,7 @@
         height: 26px;
         left: 2px;
         top: 2px;
-        background-color: #eee;
+        background-color: $textColor;
         border-radius: 50px;
         transition: all 0.4s;
     }
@@ -33,7 +35,7 @@
 
 /* On checked */
 input:checked + .slider {
-    background-color: #1aa4ff; //TODO: Set Variable
+    background-color: $primaryColor;
 }
 input:checked + .slider:before {
     transform: translateX(30px);

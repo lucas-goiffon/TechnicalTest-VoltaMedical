@@ -1,5 +1,7 @@
+@use '../../styles/variables' as *;
+
 body {
-  background-color: black;
+  background-color: $appThemeColor;
 }
 
 .main-page {
@@ -21,7 +23,7 @@ body {
     h3 {
       font-size: 26px;
       font-family: Arial, Helvetica, sans-serif;
-      color: #eee; //TODO: Set Variable
+      color: $textColor;
     }
 
     button {
@@ -30,7 +32,7 @@ body {
       outline: none;
     
       font-size: 30px;
-      color: #1aa4ff; //TODO: Set Variable
+      color: $primaryColor;
       cursor: pointer;
     }
   }
@@ -51,19 +53,19 @@ body {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: auto 90px;
-  border-bottom: 1px solid #26262a;
+  border-bottom: 1px solid $contrastColor;
   padding-left: 10px;
 
   &__time {
     font-size: 40px;
-    color: #eee; //TODO: Set Variable
+    color: $textColor;
     font-family: Arial, Helvetica, sans-serif;
     grid-row: 1;
   }
 
   &__label {
     margin: 2px 0;
-    color: #eee; //TODO: Set Variable
+    color: $textColor;
     font-family: Arial, Helvetica, sans-serif;
     grid-row: 2;
     text-overflow: ellipsis;

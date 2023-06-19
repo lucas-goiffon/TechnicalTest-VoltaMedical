@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.scss';
-import Toggle from './components/Toggle/Toggle';
+import Toggle from '@components/Toggle/Toggle';
 
 type Alarm = {
   label: string;
