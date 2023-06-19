@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+import db from './database';
 
 class AppUpdater {
   constructor() {
@@ -55,6 +56,15 @@ const installExtensions = async () => {
     )
     .catch(console.log);
 };
+
+// Handle Database Queries
+ipcMain.handle('db-query', async (event, sqlQuery) => {
+  return new Promise(res => {
+      db.all(sqlQuery, (err, rows) => {
+        res(rows);
+      });
+  });
+});
 
 const createWindow = async () => {
   if (isDebug) {

@@ -14,7 +14,7 @@ Steps:
 - [ ] Containerize with Docker?
 - [x] Use ReactJS
 - [ ] Do a basic frontend design
-- [ ] Link with database
+- [x] Link with database
 - [ ] Improve frontend
 
 Note that I'll probably not do the Docker part because I know from experience how painful it can sometimes be to open a window from a container.
