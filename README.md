@@ -25,6 +25,10 @@ You must have at least NodeJS 18 installed.
 
 Just clone this repository and run: ````npm install````.
 
+## How to use
+
+To run this project and test it, you have to execute the following command: ````npm start````.
+
 ## Notes
 
 After discovering Electron, which by the way is fast to understand, the question was: what is the best way to integrate React?
