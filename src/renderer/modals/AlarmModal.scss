@@ -1,0 +1,59 @@
+@use '../styles/variables' as *;
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(15, 15, 15, 0.7);
+}
+
+.modal {
+  border-radius: 10px;
+  text-align: center;
+  background-color: #1f1f1f;
+  word-break: break-all;
+  padding: 20px;
+
+  &__content {
+    display: grid;
+    justify-content: center;
+  }
+
+  &__hour-input {
+    grid-column: 1;
+    text-align: end;
+  }
+
+  &__hour-separator {
+    grid-column: 2;
+    color: $textColor;
+    width: 1ch;
+  }
+
+  &__minute-input {
+    grid-column: 3;
+    text-align: start;
+  }
+
+  &__footer {
+    margin-top: 10px;
+  }
+}
+
+input {
+  background-color: black;
+  border: none;
+  color: $textColor;
+  outline: none;
+  width: 2ch;
+}
+
+h3 {
+  margin-top: 0;
+  color: $textColor;
+  font-family: Arial, Helvetica, sans-serif;
+}

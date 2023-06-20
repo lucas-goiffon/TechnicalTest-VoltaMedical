@@ -1,12 +1,9 @@
 import React from 'react';
 import './Home.scss';
 import Toggle from '@components/Toggle/Toggle';
-
-type Alarm = {
-  label: string;
-  time: string;
-  isActive: boolean;
-}
+import Alarm from '@models/Alarm'
+import NiceModal from "@ebay/nice-modal-react";
+import AlarmModal from '@modals/AlarmModal';
 
 class Home extends React.Component<{}, {alarms: Alarm[]}> {
   constructor(props: any) {
@@ -27,12 +24,29 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
     alarm.isActive = !alarm.isActive;
   }
 
+  /*
+   * Modal Management
+   */
+
+  handleOpenModal(alarm: Alarm | undefined, index: number) {
+    NiceModal.show(AlarmModal, {alarm: alarm}).then((alarm) => {
+      let alarms = this.state.alarms;
+      if (index >= 0) {
+        alarms[index] = alarm as Alarm;
+      } else {
+        alarms.push(alarm as Alarm);
+      }
+      this.setState({alarms: alarms});
+      //TODO: Add in Database
+    });
+  }
+
   render() {
     return (
       <div className="main-page">
         <div className="main-page__header">
           <h3> Alarms </h3>
-          <button> + </button>
+          <button onClick={() => this.handleOpenModal(undefined, -1)}> + </button>
         </div>
         <ul className="alarms-holder">
             {

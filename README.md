@@ -13,7 +13,7 @@ Steps:
 - [x] Open a window
 - [ ] Containerize with Docker?
 - [x] Use ReactJS
-- [ ] Do a basic frontend design
+- [x] Do a basic frontend design
 - [x] Link with database
 - [ ] Improve frontend
 

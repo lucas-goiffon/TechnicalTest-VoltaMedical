@@ -16,7 +16,9 @@
     "outDir": ".erb/dll",
     "paths": {
       "@components/*": ["renderer/components/*"],
-      "@pages/*": ["renderer/pages/*"]
+      "@pages/*": ["renderer/pages/*"],
+      "@modals/*": ["renderer/modals/*"],
+      "@models/*": ["models/*"]
     }
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]
