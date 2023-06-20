@@ -4,7 +4,8 @@ node_modules/
 .pnp.js
 
 # production
-/build
+release/
+!release/app/package*
 
 # misc
 .DS_Store

@@ -1,7 +1,10 @@
 import sqlite3 from 'sqlite3';
 import path from 'path';
+import fs from 'fs';
 
-const db = new sqlite3.Database(path.resolve(__dirname, '../../database/alarms.db'), (err) => {
+const databasePath = path.resolve(__dirname, '../../database/alarms.db');
+const isDatabaseCreation = fs.existsSync(databasePath);
+const db = new sqlite3.Database(databasePath, (err) => {
   if (err) {
     console.error('Database opening error: ', err);
   }
@@ -12,14 +15,11 @@ db.serialize(() => {
   db.run("CREATE TABLE IF NOT EXISTS Alarms (label, time, isActive);");
 });
 
-//Insert an example if starting app with an empty database
-//TODO: Find a way to do it only on the first start
-db.all("SELECT COUNT(*) AS number FROM Alarms;", (err, row: any[]) => {
-  if (row[0].number < 1) {
-    db.serialize(() => {
-      db.run("INSERT INTO Alarms VALUES (?, ?, ?);", ['Example Alarm', '23:42', false]);
-    });
-  }
-})
+//Insert an example if starting app for the first time
+if (!isDatabaseCreation) {
+  db.serialize(() => {
+    db.run("INSERT INTO Alarms VALUES (?, ?, ?);", ['Example Alarm', '23:42', false]);
+  });
+}
 
 export default db;
