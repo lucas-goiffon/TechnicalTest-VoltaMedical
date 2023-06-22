@@ -15,7 +15,7 @@ Steps:
 - [x] Use ReactJS
 - [x] Do a basic frontend design
 - [x] Link with database
-- [ ] Improve frontend
+- [x] Improve frontend
 
 Note that I'll probably not do the Docker part because I know from experience how painful it can sometimes be to open a window from a container.
 
@@ -33,6 +33,8 @@ To run this project and test it, you have to execute the following command: ````
 
 After discovering Electron, which by the way is fast to understand, the question was: what is the best way to integrate React?
 So I did my researches, I found several boilerplates, and I choosed [this one](https://github.com/electron-react-boilerplate/electron-react-boilerplate) because of it's simplicity.
+
+I'm used to FormBuilders but, as there was only one very basic form, I didn't take the time to search about it.
 
 ## Author
 * **Lucas GOIFFON** - [lucas-goiffon](https://lucas-goiffon.eu/)

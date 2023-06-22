@@ -22,6 +22,7 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
 
   onAlarmToggle(alarm: Alarm): void {
     alarm.isActive = !alarm.isActive;
+    //TODO: Save in Database
   }
 
   /*
@@ -31,13 +32,16 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
   handleOpenModal(alarm: Alarm | undefined, index: number) {
     NiceModal.show(AlarmModal, {alarm: alarm}).then((alarm) => {
       let alarms = this.state.alarms;
-      if (index >= 0) {
+
+      if (!alarm) {                     //Delete
+        alarms.splice(index, 1);
+      } else if (index >= 0) {          //Update
         alarms[index] = alarm as Alarm;
-      } else {
+      } else {                          //Create
         alarms.push(alarm as Alarm);
       }
       this.setState({alarms: alarms});
-      //TODO: Add in Database
+      //TODO: Save in Database
     });
   }
 
@@ -52,7 +56,7 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
             {
               this.state.alarms.map((alarm: Alarm, index: number) => {
                 return (
-                  <li key={index} className="alarm-item">
+                  <li key={index} className="alarm-item" onClick={(e) => {if ((e.target as HTMLButtonElement).className.startsWith("alarm-item")) this.handleOpenModal(alarm, index);}}>
                     <div style={{display: "grid"}}>
                       <span className="alarm-item__time">{ alarm.time }</span>
                       <span className="alarm-item__label">{ alarm.label }</span>

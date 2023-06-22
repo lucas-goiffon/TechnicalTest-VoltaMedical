@@ -1,6 +1,6 @@
 type Alarm = {
   label: string;
-  time: string;
+  time: string; //Should probably split hours and minutes
   isActive: boolean;
 }
 
