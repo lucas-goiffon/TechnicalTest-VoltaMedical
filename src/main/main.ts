@@ -60,9 +60,9 @@ const installExtensions = async () => {
 // Handle Database Queries
 ipcMain.handle('db-query', async (event, sqlQuery) => {
   return new Promise(res => {
-      db.all(sqlQuery, (err, rows) => {
-        res(rows);
-      });
+    db.all(sqlQuery, (err, rows) => {
+      res((err && err.message) || rows);
+    });
   });
 });
 

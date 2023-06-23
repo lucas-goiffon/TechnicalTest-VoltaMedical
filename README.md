@@ -6,7 +6,7 @@ More details about the technologies:
 - [x] Electron
 - [x] React / Typescript Frontend
 - [x] Fonctional Component
-- [ ] Alarms persistence with SQLite
+- [x] Alarms persistence with SQLite
 
 Steps:
 - [x] Create a first Electron App

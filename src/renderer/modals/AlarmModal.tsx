@@ -2,7 +2,7 @@ import { useState } from "react";
 import NiceModal, { useModal } from "@ebay/nice-modal-react";
 import toast from 'react-hot-toast';
 import './AlarmModal.scss';
-import Alarm from "@models/Alarm";
+import { Alarm } from "@models/Alarm";
 
 type AlarmModalProps = {
   alarm?: Alarm

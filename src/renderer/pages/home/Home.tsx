@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.scss';
 import Toggle from '@components/Toggle/Toggle';
-import Alarm from '@models/Alarm'
+import { Alarm, AlarmHelper } from '@models/Alarm'
 import NiceModal from "@ebay/nice-modal-react";
 import AlarmModal from '@modals/AlarmModal';
 
@@ -17,31 +17,31 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
   }
 
   private async getAlarms() {
-    this.setState({alarms: await window.electron.ipcRenderer.invoke('db-query', "SELECT * FROM Alarms;")});
+    this.setState({alarms: await AlarmHelper.get()});
   }
 
-  onAlarmToggle(alarm: Alarm): void {
+  private onAlarmToggle(alarm: Alarm): void {
     alarm.isActive = !alarm.isActive;
-    //TODO: Save in Database
+    AlarmHelper.update(alarm);
   }
 
-  /*
-   * Modal Management
-   */
-
-  handleOpenModal(alarm: Alarm | undefined, index: number) {
-    NiceModal.show(AlarmModal, {alarm: alarm}).then((alarm) => {
+  private handleOpenModal(alarm: Alarm | undefined, index: number) {
+    NiceModal.show(AlarmModal, {alarm: alarm}).then(async (res) => {
       let alarms = this.state.alarms;
+      const alarm = res as Alarm;
 
-      if (!alarm) {                     //Delete
+      if (!alarm) {                                               //Delete
+        AlarmHelper.delete(alarms[index]);
         alarms.splice(index, 1);
-      } else if (index >= 0) {          //Update
-        alarms[index] = alarm as Alarm;
-      } else {                          //Create
-        alarms.push(alarm as Alarm);
+      } else if (index >= 0) {                                    //Update
+        AlarmHelper.update(alarm);
+        alarms[index] = alarm;
+      } else {                                                    //Create
+        alarm.rowid = (await AlarmHelper.create(alarm))[0].rowid;
+        alarms.push(alarm);
       }
       this.setState({alarms: alarms});
-      //TODO: Save in Database
+      console.log(alarms);
     });
   }
 
