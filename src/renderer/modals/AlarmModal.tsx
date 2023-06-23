@@ -22,8 +22,12 @@ const AlarmModal = NiceModal.create(({alarm}: AlarmModalProps) => {
   const actionName = alarm ? "Edit" : "Create";
 
   const onValidateClick = () => {
-    if (!/^\d\d:\d\d$/.exec(time)) { //There's only one very simple form so I didn't search for any FormBuilder etc...
+    if (!/^([0-1]\d|2[0-3]):[0-5]\d$/.exec(time)) { //There's only one very simple form so I didn't search for any FormBuilder etc...
       toast.error("Please enter a valid time.", {duration: 3000, style: {fontFamily: "Arial"}});
+      return;
+    }
+    if (!/^[a-zA-Z0-9 \u00C0-\u017F_\-\(\)&]*$/.exec(label)) { //Avoid SQL Injection
+      toast.error("Label can only contains alphanumeric characters.", {duration: 3000, style: {fontFamily: "Arial"}});
       return;
     }
 

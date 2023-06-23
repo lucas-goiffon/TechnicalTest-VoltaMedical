@@ -36,5 +36,7 @@ So I did my researches, I found several boilerplates, and I choosed [this one](h
 
 I'm used to FormBuilders but, as there was only one very basic form, I didn't take the time to search about it.
 
+I didn't search for a database helper to make life easier for requests and protect against SQL Injections because I didn't have enough time.
+
 ## Author
 * **Lucas GOIFFON** - [lucas-goiffon](https://lucas-goiffon.eu/)
