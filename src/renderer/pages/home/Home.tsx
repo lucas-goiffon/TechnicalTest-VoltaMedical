@@ -3,6 +3,7 @@ import './Home.scss';
 import Toggle from '@components/Toggle/Toggle';
 import { Alarm, AlarmHelper } from '@models/Alarm'
 import NiceModal from "@ebay/nice-modal-react";
+import toast from 'react-hot-toast';
 import AlarmModal from '@modals/AlarmModal';
 
 class Home extends React.Component<{}, {alarms: Alarm[]}> {
@@ -14,6 +15,21 @@ class Home extends React.Component<{}, {alarms: Alarm[]}> {
       alarms: []
     };
     this.getAlarms();
+    this.startClock();
+  }
+
+  private startClock() {
+    let me = this;
+
+    setInterval(() => {
+      let time = new Date().toLocaleTimeString("fr-FR", {hour: "2-digit", minute: "2-digit"});
+
+      me.state.alarms.map((alarm: Alarm) => {
+        if (alarm.isActive && alarm.time == time) {
+          toast(`It's time! [${alarm.label}]`, {duration: 5000, style: {fontFamily: "Arial"}, icon: '⏰'});
+        }
+      });
+    }, 60000); //Every minutes
   }
 
   private async getAlarms() {
